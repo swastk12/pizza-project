@@ -1,0 +1,25 @@
+create directory structure 👍
+create a npm project and install all dependencies 👍
+-dependencies👍
+-express👍
+-ejs express-ejs-layouts👍
+-dev dependencies👍
+-nodemon👍
+create a express server - create a server.js file👍
+git set and first commit
+install laravel mix
+-setup js and scss
+install tailwind css
+create home page using html nand css 
+create cart page 
+-order sammery section
+-empty cart section
+create order controller and link it in server .js
+create order view with table for customer and admin
+create orders single page with status
+create login page with route 
+create register page anjde route
+build register crud
+-dependencies express-flash express-session cookie-parser dotenv
+-status code article 
+-database connection , dependencies mongoose
