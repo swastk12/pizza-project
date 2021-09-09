@@ -6,10 +6,10 @@ create a npm project and install all dependencies 👍
 -dev dependencies👍
 -nodemon👍
 create a express server - create a server.js file👍
-git set and first commit
-install laravel mix
--setup js and scss
-install tailwind css
+git set and first commit👍
+install laravel mix👍
+-setup js and scss👍
+install tailwind css👍
 create home page using html nand css 
 create cart page 
 -order sammery section
