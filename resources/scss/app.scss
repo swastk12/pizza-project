@@ -27,21 +27,17 @@ section.hero{
     background: $secondary;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+.btn-primary{
+  background: $primary;
+  transition: $smooth;
 
-@mixin button-bg($bg) {
-  background: $bg;
-  &:hover {
-    background:darken($bg,8%);
-    transition: all 0.3s ease;
+  &:hover{
+    background: $primary-hover;
   }
-  &:active {
-    background:darken($bg,25%);
-  } 
 }
-.btn-red {
-    @include button-bg(#DA723C);
- }
+
+
+
  .size{
      background: $secondary;
  }
@@ -59,4 +55,23 @@ section.hero{
  .grid{
     column-gap: 2rem;
     row-gap: 4rem;
+ }
+
+ section.cart{
+     background: $secondary;
+     .amount{
+         color: $primary;
+     }
+ }
+
+ section.login{
+ background: $secondary;
+ min-height: calc(100vh - 86px);
+ a{
+     color:$primary;
+
+     &:hover{
+         color: $primary-hover;
+     }
+ }
  }
