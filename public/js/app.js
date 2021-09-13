@@ -7,7 +7,12 @@
   \*****************************/
 /***/ (() => {
 
-console.log("hellow from app js");
+var addTocart = document.querySelectorAll('.add-to-cart');
+addTocart.forEach(function (btn) {
+  btn.addEventListener('click', function (e) {
+    console.log(e);
+  });
+});
 
 /***/ }),
 
