@@ -11,7 +11,9 @@ const mongoose = require("mongoose")
 const session = require("express-session")
 const flash = require('express-flash')
 const MongodbStore = require('connect-mongo')
+var url_module = require('url');
 
+app.use(express.json())
 
 //database connection
 const url = "mongodb://localhost/pizza-app";
@@ -57,6 +59,13 @@ app.use(flash());
 
 app.use(express.static('public'))
 
+//global middleware
+ app.use((req, res, next)=>{
+ res.locals.session = req.session
+ next()
+ })
+
+
 // SET TEMPLATE ENGINE  
 const dell = path.join(__dirname,"./resources/views")  
 app.use(expressLayout)
@@ -68,3 +77,5 @@ require("./routes/web")(app)
 app.listen(port, ()=>{
     console.log(` port successfull ${port}`)
 })
+
+
