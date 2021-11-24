@@ -1,6 +1,5 @@
+
 require('dotenv').config()
-
-
 const express = require("express");
 const ejs = require("ejs");
 const expressLayout = require("express-ejs-layouts")
@@ -11,9 +10,9 @@ const mongoose = require("mongoose")
 const session = require("express-session")
 const flash = require('express-flash')
 const MongodbStore = require('connect-mongo')
-var url_module = require('url');
+//var url_module = require('url');
+const passport = require('passport')
 
-app.use(express.json())
 
 //database connection
 const url = "mongodb://localhost/pizza-app";
@@ -29,53 +28,61 @@ console.log("connected")
 })
 
 
+// Session store
+//let mongoStore = new MongoDbStore({
+  //              mongooseConnection: connection,
+    //            collection: 'sessions'
+      //      })
 
-
-
-// session store
-
-//let mongoStore = new MongodbStore({
-  //  mongooseConnection:storesData,
-  //  collection:'sessions'
-//})
-
-
-
+// Event emitter
+//const eventEmitter = new Emitter()
+//app.set('eventEmitter', eventEmitter)
 
 
 // session config
 app.use(session({
-    secret:process.env.COKKIE_SECRET,
-    resave:false,
-    store:MongodbStore.create({
-       client: connection.getClient()
-    }),
-    saveUninitialized:false,
-    cookie:{maxAge:1000*60*60*24}
-     // cookie:{maxAge:1000*10}
+  secret:process.env.COKKIE_SECRET,
+  resave:false,
+  store:MongodbStore.create({
+     client: connection.getClient()
+  }),
+  saveUninitialized:false,
+  cookie:{maxAge:1000*60*60*24}
+   // cookie:{maxAge:1000*10}
 }))
 
-app.use(flash());
 
+// Passport config
+const passportInit = require('./app/config/passport')
+passportInit(passport)
+app.use(passport.initialize())
+app.use(passport.session())
+
+app.use(flash())
+// Assets
 app.use(express.static('public'))
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 
-//global middleware
- app.use((req, res, next)=>{
- res.locals.session = req.session
- next()
- })
-
-
-// SET TEMPLATE ENGINE  
-const dell = path.join(__dirname,"./resources/views")  
+// Global middleware
+app.use((req, res, next) => {
+    res.locals.session = req.session
+    res.locals.user = req.user
+    next()
+})
+// set Template engine
 app.use(expressLayout)
-app.set("views", dell );
-app.set("view engine", "ejs")
+app.set('views', path.join(__dirname, '/resources/views'))
+app.set('view engine', 'ejs')
 
-require("./routes/web")(app)
+require('./routes/web')(app)
+app.use((req, res) => {
+    res.status(404).render('errors/404')
+})
 
 app.listen(port, ()=>{
     console.log(` port successfull ${port}`)
 })
+
 
 
