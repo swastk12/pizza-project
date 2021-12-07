@@ -5,7 +5,7 @@
 
     <div class="w-1/2">
         <h6 class="text-3xl  "><em>Are you hungry?</em></h6>
-        <h1 class="text-8xl font-bold">Don't Wait ! </h1>
+        <h1 class="text-3xl md:text-6xl font-bold">Don't Wait ! </h1>
          <button class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary">Order Now</button>
     </div>
 
@@ -15,15 +15,17 @@
     </div>
 
 </div>
-
 </section>
+
+
+
 
 <section class="menu container mx-auto py-5">
     <h1 class="text-xl font-bold mb-8">All Pizzas</h1>
-<div class="grid grid-cols-4  mb-20 ">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-20 ">
 
     <% pizzas.map(function(pizza) { %>
-     <div class="w-64">
+     <div class="w-full md:w-54">
             <img class="h-40 mb-4 mx-auto" src="/images/<%= pizza.image %>" alt="">
             <div class="text-center">
                 <h2 class="mb-4 text-lg"><%= pizza.name %></h2>
@@ -63,14 +65,9 @@
             <div class="footer_bg_two"></div>
         </div>
     </div>
-    <div class="footer_bottom">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-sm-7">
-         
-                </div>
-                <div class="col-lg-6 col-sm-5 text-center">
-                    <p style="color:blueviolet ;"> <i class="icon_heart"></i>   &COPY;2021 Mern developers  . All right reserved <a href="#" target="_blank">PIZZA-HUB</a></p>
+ 
+                <div class="MD:col-lg-6 col-sm-5 text-center">
+                    <p style="color:blueviolet ;"> <i class="icon_heart"></i>   &COPY;2021 All right reserved <a href="#" target="_blank">PIZZA-HUB</a></p>
                 </div>
             </div>
         </div>

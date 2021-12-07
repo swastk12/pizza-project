@@ -565,3 +565,23 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 /*************footer End*****************/
+a.link {
+  color: #FE5F1E;
+}
+
+@media (max-width: 800px) {
+  .container {
+    max-width: 88%;
+  }
+
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 768px) {
+  .status-box ul li span:before {
+    font-size: 34px;
+  }
+}
