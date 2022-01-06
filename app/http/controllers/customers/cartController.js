@@ -43,11 +43,6 @@ if(!cart.items[req.body._id]){
 
 
 
-
-
-
-
-
 return res.json({totalqty:req.session.cart.totalqty})
 
 
